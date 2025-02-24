@@ -1,0 +1,12 @@
+# Download all the required jar files:
+curl -OLJ https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-core/2.18.2/jackson-core-2.18.2.jar
+curl -OLJ https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.18.2/jackson-annotations-2.18.2.jar
+curl -OLJ https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.18.2/jackson-databind-2.18.2.jar
+curl -OLJ https://github.com/icbm-iupui/volumetric-tissue-exploration-analysis/releases/download/v1.2.3/vtea_1.2.3-vtea.jar
+curl -OLJ https://imagej.net/ij/download/jars/ij146r.jar
+
+# Compile
+javac -cp .:jackson-core-2.18.2.jar:jackson-databind-2.18.2.jar ObjectStreamParser.java
+
+# Run 
+java -cp .:jackson-core-2.18.2.jar:jackson-databind-2.18.2.jar:vtea_1.2.3-vtea.jar:ij146r.jar:jackson-annotations-2.18.2.jar ObjectStreamParser /mnt/data2/KPMP/23-0147_Segmentation.obx > output.json
